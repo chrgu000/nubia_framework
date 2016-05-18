@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="one.rangp.metadata.dao.mapper.UserDao">
+
+	<resultMap type="one.rangp.metadata.dao.entity.User" id="UserMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+	</resultMap>
+	
+
+	
+	
+	<!--  <insert id="addUser">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		INSERT INTO user(name,address) VALUES
+		(#{name},#{address})
+	</insert> -->
+	
+	<insert id="addUser">
+		INSERT INTO user(id,name,address) VALUES
+		(#{userId},#{name},#{address})
+	</insert>
+	
+</mapper>
