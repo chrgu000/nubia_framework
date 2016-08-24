@@ -1,0 +1,47 @@
+nginx- 2tomcat 负载均衡
+
+权重值路由
+upstream backend  {
+        server <ip>:8080 weight=2;      
+        server <ip>:8090 weight=3;      
+}
+ip路由
+upstream backend  {
+		server <ip>:8080;      
+        server <ip>:8090;
+        ip_hash;	
+}
+
+
+server {
+	listen 80;
+	server_name <ip><域名>;
+	location / {
+		location ~*/<项目>/{
+			proxy_pass http://backend;
+		}
+	}
+}
+
+同理可以配置两个backend 根据请求路由
+upstream backend1 {
+	server <ip>:8080;
+}
+upstream backend2 {
+	server <ip>:8090;
+}
+
+server {
+	listen 80;
+	server_name <ip><域名>;
+
+	location /xxx {
+		proxy:pass http://backend1;
+	}
+
+	location / {
+		proxy:pass http://backend2;
+	}
+}
+
+
