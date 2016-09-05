@@ -1,0 +1,59 @@
+springmvc 【请求篇】
+1.xml 文件中添加<mvc:annotation-driven/>
+即可使用springMvc 帮你默认提供的几种handlermapping 和handlerAdapters[默认是requestMappingHandlerAdapter]
+2.ex.handle(processedRequest, response, mappedHandler.getHandler())
+调用AbstractHandlerMethodAdapter.handle()
+3.调用AbstractHandlerMethodAdapter.handleInternal
+默认是实现的RequestMappingHandlerAdapter.handleInternal
+4.invokeHandleMethod 调用 requestMappingMethod.invokeAndHandle(webRequest, mavContainer, new Object[0]);
+5.默认是ServletInvocableHandlerMethod.invokeAndHandle()
+6.调用 InvocableHandlerMethod.invokeForRequest()
+7.调用this.getMethodArgumentValues(request, mavContainer, providedArgs);
+8.在getMethodArgumentValues 中有一行
+args[i] = this.argumentResolvers.resolveArgument(parameter, mavContainer, request, this.dataBinderFactory);
+9.默认是实现HandlerMethodArgumentResolverComposite.resolveArgument()
+10.this.getArgumentResolver(parameter);
+注意，这是一个非常大的分水岭
+把这个方法的代码贴出来
+private HandlerMethodArgumentResolver getArgumentResolver(MethodParameter parameter) {
+        HandlerMethodArgumentResolver result = (HandlerMethodArgumentResolver)this.argumentResolverCache.get(parameter);
+        if(result == null) {
+            Iterator var3 = this.argumentResolvers.iterator();
+
+            while(var3.hasNext()) {
+                HandlerMethodArgumentResolver methodArgumentResolver = (HandlerMethodArgumentResolver)var3.next();
+                if(this.logger.isTraceEnabled()) {
+                    this.logger.trace("Testing if argument resolver [" + methodArgumentResolver + "] supports [" + parameter.getGenericParameterType() + "]");
+                }
+
+                if(methodArgumentResolver.supportsParameter(parameter)) {
+                    result = methodArgumentResolver;
+                    this.argumentResolverCache.put(parameter, methodArgumentResolver);
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+第一次调用的时候，result肯定是null
+代码分析，如果result == null 
+则迭代argumentResolvers,默认初始化加载24个实现 HandlerMethodArgumentResolver 接口的resolver
+调试发现，如果不使用@RequestBody 即使用默认的modelAndView格式，则
+this.argumentResolverCache.put(parameter, methodArgumentResolver);
+这个地方methodArgumentResolver 为ModelAttributeMethodProcessor 的子类ServletModelAttributeMethodProcessor
+如果使用了@RequestBody 注解，methodArgumentResolver 为 RequestResponseBodyMethodProcessor
+argumentResolverCache 是currentHashMap,即第一次进来后对应的key 已经存入了 MethodParameter，则相应的HandlerMethodArgumentResolver 已经确定
+11.ModelAttributeMethodProcessor.resolveArgument 
+12.回到第6步，调用doInvoke(args)
+13.如果使用@RequestBody  RequestResponseBodyMethodProcessor.resolveArgument
+this.readWithMessageConverters(webRequest, parameter, parameter.getGenericParameterType());
+14.调用readWithMessageConverters 前面写到使用<mvc:annotation-driven/> 会加载默认的7个messageConverters
+0 = {ByteArrayHttpMessageConverter@9705} 
+1 = {StringHttpMessageConverter@9706} 
+2 = {ResourceHttpMessageConverter@9707} 
+3 = {SourceHttpMessageConverter@9708} 
+4 = {AllEncompassingFormHttpMessageConverter@9709} 
+5 = {Jaxb2RootElementHttpMessageConverter@9710} 
+6 = {MappingJacksonHttpMessageConverter@9711}
+正常来说，每个converter能解析哪种格式，是converter.canRead方法决定的，当然如果一个都不满足，会抛出throw new HttpMediaTypeNotSupportedException(contentType, this.allSupportedMediaTypes);
