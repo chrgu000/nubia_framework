@@ -1,0 +1,135 @@
+curl -XPOST http://127.0.0.1:9200/nubrowser_suggest_idx_5 -d '
+{"settings": {
+"index": {
+"refresh_interval": "1s",
+"number_of_shards": "1",
+"number_of_replicas": "1"
+}
+}
+}'
+
+
+
+curl -XPUT http://127.0.0.1:9200/nubrowser_suggest_idx_5/_mapping/suggest_content -d '
+{  
+		
+		"_all":{
+		  "enabled": false
+		},
+		"_source": {
+		  "compressed" : true
+		}, 
+        "properties": {
+          "title": {
+            "type": "string",
+            "fields": {
+              "hanzi":{
+                "type": "string",
+                "index": "analyzed",
+                "analyzer": "ik"
+              },
+              "pinyin":{
+                "type": "string",
+                "analyzer": "pinyin_analyzer"
+              },
+              "prefix_pinyin":{
+                "type": "string",
+                "analyzer": "prefix_pinyin_analyzer"
+              },
+              "hanzi_pinyin":{
+                "type": "string",
+                "analyzer": "ik_pinyin_analyzer"
+              },
+              "raw":{
+                "type": "string",
+                "index": "not_analyzed"
+              }
+            }
+          },
+          "icon": {
+            "type": "string",
+            "index": "no"
+          },
+          "tag": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "url": {
+            "type": "string",
+            "index": "analyzed",
+            "analyzer": "url_analyzer"
+          },
+          "intro": {
+            "type": "string",            
+            "index": "analyzed",
+            "analyzer": "ik_smart"           
+          },
+          "priority": {
+            "type":"integer"
+          },
+          "enable": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "integer"
+          },
+          "action": {
+            "type": "integer"
+          },
+          "invoke_action": {
+            "type": "string",
+            "index": "no"
+          },
+          "invoke_package": {
+            "type": "string",
+            "index": "no"
+          },
+          "invoke_class": {
+            "type": "string",
+            "index": "no"
+          },
+		   "invoke_backup_url": {
+            "type": "string",
+            "index": "no"
+          },
+          "invoke_params": {
+            "type": "string",
+            "index": "no"
+          },
+          "from": {
+            "type": "string"
+          },
+		  "heat": {
+			"type": "integer"
+		  },
+          "add_time": {
+            "type": "date",
+            "format": "basic_date_time"
+            ,"index": "not_analyzed"
+          },
+           "add_by": {
+            "type": "integer"
+          }
+      }    
+}'
+
+
+curl -XPOST 'http://localhost:9200/_aliases' -d ' 
+{
+    "actions": [
+        { "remove": {
+            "alias": "nubrowser_suggest_idx",
+            "index": "nubrowser_suggest_idx_1"
+        }},
+        { "add": {
+            "alias": "nubrowser_suggest_idx",
+            "index": "nubrowser_suggest_idx_5"
+        }}
+    ]
+}'
+
+1.导数据
+#curl -XPUT 'http://localhost:9200/nubrowser_suggest_idx_4/suggest_content/_reindex?searchIndex=nubrowser_suggest_idx_1&searchType=suggest_content' -d '
+#{ "query" : { "match_all" : {} } }'
+
+
