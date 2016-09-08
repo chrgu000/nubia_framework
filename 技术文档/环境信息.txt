@@ -1,0 +1,128 @@
+环境信息
+#主题
+http://theme-admin-test.nubia.cn/
+admin/Nubia_theme@2016
+http://theme-api-test.nubia.cn/
+
+http://admin.theme.nubia.cn/
+admin/admin123
+http://api.theme.nubia.cn/
+
+#浏览器
+测试服务器
+http://admin.browser-test.server.ztemt.com.cn/
+admin/Nubrowser2015
+http://api.browser-test.server.ztemt.com.cn/
+http://stat.browser-test.server.ztemt.com.cn/
+http://browser-push.server.ztemt.com.cn/
+admin/nubrowser2015
+
+生产环境
+http://admin.browser.server.nubia.cn/
+getingting/nubrowser2015
+wuchengjin/nubrowser2015
+http://stat.browser.server.nubia.cn/
+http://browser.server.nubia.cn/
+http://push.browser.server.nubia.cn/
+admin/nubrowser2015
+http://admin.monitor.nubia.cn/
+nubrowser/nubrowser2016
+
+连接push数据库
+mysql -h rdsa5m0un7i9h7951118.mysql.rds.aliyuncs.com -ugm -p
+xZkD9VS7eYl3LN
+连接admin数据库
+mysql -h rdsd4aw5b0t0k5eg3bw7.mysql.rds.aliyuncs.com -ugm -p
+JRgQ5KU1U02PcY
+
+生产环境后台日志下载
+http://admin.browser.server.nubia.cn/logs/nubrowser_admin.out
+nubia4/qkVf8On49X7F
+
+push nginx反向代理部分[代理1和代理2都指向2个tomcat]
+location /push.action {
+            proxy_pass http://backend1;
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_read_timeout 180;
+        }
+     location / {
+            proxy_pass http://backend2;
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_read_timeout 180;
+        }
+
+
+push 后台夜里2点报错导致宕机问题定位
+从2016-09-07 02:00:00开始，tomcat2 出现如下问题，2:00:00发送tomcat 内存占用超70%报警，紧接着提示宕机，由此可见jvm有大量内存未释放导致；
+时间为整点，所以定位问题是定时任务导致；
+排查配置文件，在/data/wwwroot/nubia_browser_push/WEB-INF/application-context.xml中存在如下内容
+<bean id="jobSchedulerFactory" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cleanMessageCronTrigger" />
+				<ref bean="cleanMessageHisCronTrigger" />
+				<ref bean="cleanSubscriberLinkLogCronTrigger" />
+			</list>
+		</property>
+	</bean>
+	<bean id="cleanMessageJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="messageService" />
+		</property>
+		<property name="targetMethod">
+			<value>cleanReceiveMessage</value>
+		</property>
+	</bean>
+	<bean id="cleanMessageCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="cleanMessageJob" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 2 * * ?</value>
+		</property>
+	</bean>
+	
+查找cn.nubia.photosns.push.2015.12.24.jar 中MessageServiceImpl 会查询tbl_receive_message 小于当前时间的记录，如果记录过多，会导致查询出的list放到jvm中内存溢出错误
+从而导致每天的定时任务都会导致宕机
+解决方法：找运维人员执行 delete from tbl_receive_message where life_time < 当天2点转化成秒;
+public void cleanReceiveMessage()
+  {
+    if (1 != Constants.JOB_TASK) {
+      return;
+    }
+    System.out.println("Job : clean ReceiveMessage...");
+
+    String sql = "from ReceiveMessage rm where rm.lifeTime<:lifeTime";
+    long lifeTime = System.currentTimeMillis() / 1000L;
+    Map params = new HashMap();
+    params.put("lifeTime", Long.valueOf(lifeTime));
+    List list = this.receiveMessageDao.queryList(sql, params);
+
+    if ((list != null) && (list.size() > 0)) {
+      Map timeout = new HashMap();
+
+      for (ReceiveMessage receive : list) {
+        if (!timeout.containsKey(receive.getPushId())) {
+          timeout.put(receive.getPushId(), Integer.valueOf(1));
+        } else {
+          Integer timeoutNum = (Integer)timeout.get(receive.getPushId());
+          timeoutNum = Integer.valueOf(timeoutNum.intValue() + 1);
+          timeout.put(receive.getPushId(), timeoutNum);
+        }
+        this.log.info("timeout : pushId = " + receive.getPushId() + ", subscriberId = " + receive.getSubscriberId() + ", msg = " + receive.getMsgContent());
+      }
+      .....	
+    }
+  }	
