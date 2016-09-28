@@ -16,6 +16,9 @@ http://api.browser-test.server.ztemt.com.cn/
 http://stat.browser-test.server.ztemt.com.cn/
 http://browser-push.server.ztemt.com.cn/
 admin/nubrowser2015
+分布式日志文件系统
+http://10.206.19.237:8255/
+browser/logcentre2016
 
 生产环境
 http://admin.browser.server.nubia.cn/
@@ -126,3 +129,7 @@ public void cleanReceiveMessage()
       .....	
     }
   }	
+
+push组件测试环境
+http://push-admin-test.nubia.com/
+mayan/neotheme@2016
