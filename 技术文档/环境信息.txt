@@ -3,6 +3,20 @@
 http://theme-admin-test.nubia.cn/
 admin/Nubia_theme@2016
 http://theme-api-test.nubia.cn/
+测试机器
+api
+ssh -p 47461 heping@121.196.238.100
+yQR2XwZmGvU7A0HKV1zqmDn9
+admin
+ssh -p 47461 zhang.sibei@114.55.135.25
+T1R7OXOrVxM0UcPOP2od
+redis
+ssh -p 47461 zhang.sibei@114.55.179.44
+T1R7OXOrVxM0UcPOP2od
+mysql -h rm-bp1rtopz2hi2ml5ze.mysql.rds.aliyuncs.com
+HOgQyLYBlHrRP9vVx7CT
+nubia_theme_test
+nubia_theme_test
 
 http://admin.theme.nubia.cn/
 admin/admin123
