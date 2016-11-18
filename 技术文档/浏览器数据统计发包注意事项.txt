@@ -1,0 +1,3 @@
+浏览器数据统计发包注意事项：
+1.statistic-1:8001 与其他包不同，spring-core.xml 中 <context:component-scan base-package="cn.nubia.browser.stat.task.reportstat"/> 需放开，其他statistic注释掉
+

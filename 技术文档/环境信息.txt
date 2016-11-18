@@ -4,7 +4,7 @@ http://theme-admin-test.nubia.cn/
 admin/Nubia_theme@2016
 http://theme-api-test.nubia.cn/
 测试机器
-api
+api 
 ssh -p 47461 heping@121.196.238.100
 yQR2XwZmGvU7A0HKV1zqmDn9
 admin
@@ -33,6 +33,27 @@ admin/nubrowser2015
 分布式日志文件系统
 http://10.206.19.237:8255/
 browser/logcentre2016
+测试环境阿里云
+114.55.250.152  10.24.243.154   浏览器api测试环境
+118.178.95.109  10.24.241.242   浏览器admin,push_admin测试环境
+118.178.94.228  10.27.212.137        浏览器redis测试环境
+114.55.100.75        10.26.235.195         浏览器mongo测试环境、elasticsearch测试环境
+
+port: 47461
+username: devbrowser
+password: w1jcLyoUkqQ4SWvg
+
+RDS地址：
+mysql -h rm-bp1d1l1p2cl5r2g2b.mysql.rds.aliyuncs.com -unb_browser_test -p
+用户名：nb_browser_test
+密码：6egvBNSM5BxPwQFZ4W
+数据库名：nubrowser_test
+
+
+用户名：nb_browser_push
+密码：6egvBNSM5BxPwQFZ4W
+数据库名：browser_push_test
+
 
 生产环境
 http://admin.browser.server.nubia.cn/
@@ -44,6 +65,8 @@ http://push.browser.server.nubia.cn/
 admin/nubrowser2015
 http://admin.monitor.nubia.cn/
 nubrowser/nubrowser2016
+http://admin-logcenter.nubia.com/
+browser/logcentre2016
 
 连接push数据库
 mysql -h rdsa5m0un7i9h7951118.mysql.rds.aliyuncs.com -ugm -p
@@ -51,6 +74,8 @@ xZkD9VS7eYl3LN
 连接admin数据库
 mysql -h rdsd4aw5b0t0k5eg3bw7.mysql.rds.aliyuncs.com -ugm -p
 JRgQ5KU1U02PcY
+mysql -h rm-bp1d1l1p2cl5r2g2b.mysql.rds.aliyuncs.com -u devbrowser -p
+w1jcLyoUkqQ4SWvg
 
 生产环境后台日志下载
 http://admin.browser.server.nubia.cn/logs/nubrowser_admin.out
@@ -147,3 +172,13 @@ public void cleanReceiveMessage()
 push组件测试环境
 http://push-admin-test.nubia.com/
 mayan/neotheme@2016
+
+浏览器数据统计mongo服务器 ：120.27.138.126 
+新申请的机器 es集群 120.26.57.243
+
+ssh端口： 47461
+登录账户：guming  口令： PNWZShyw1jcLyoUkqQ4SWvgR
+
+114.55.42.115  guming/guming123
+数据库的内网的ip：10.25.67.76
+端口3306
