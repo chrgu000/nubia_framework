@@ -9,9 +9,10 @@ for(var i = 0 ; i < tables.length; i ++){
 }
 
 function getBoolean(str){
-   if(parseInt(str.split("_")[4]) < 20160301){
-      return true;
-   }else{
-      return false;
-   }
+	var date = parseInt(str.split("_")[4]) ? parseInt(str.split("_")[4]) : parseInt(str.split("_")[3]);
+	if(date < 20160301){
+		return true;
+	}else{
+		return false;
+	}
 }

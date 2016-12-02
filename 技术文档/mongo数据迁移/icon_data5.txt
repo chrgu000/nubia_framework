@@ -1,0 +1,120 @@
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160502.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(373).skip(1).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160502.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160503.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(670).skip(2).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160503.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160504.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(583).skip(3).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160504.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160505.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(610).skip(4).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160505.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160506.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(912).skip(5).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160506.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160507.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1202).skip(6).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160507.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160508.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1302).skip(7).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160508.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160509.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1185).skip(8).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160509.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160510.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1392).skip(9).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160510.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160511.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1409).skip(10).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160511.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160512.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1621).skip(11).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160512.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160513.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1958).skip(12).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160513.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160514.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(1940).skip(13).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160514.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160515.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2258).skip(14).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160515.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160516.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2387).skip(15).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160516.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160517.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2555).skip(16).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160517.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160518.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2297).skip(17).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160518.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160519.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2622).skip(18).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160519.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160520.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2973).skip(19).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160520.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160521.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(2786).skip(20).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160521.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160522.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3020).skip(21).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160522.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160523.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3231).skip(22).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160523.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160524.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3325).skip(23).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160524.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160525.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3568).skip(24).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160525.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160526.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3707).skip(25).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160526.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160527.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3577).skip(26).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160527.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160528.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(4052).skip(27).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160528.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160529.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(4053).skip(28).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160529.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160530.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(3943).skip(29).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160530.insert(x)});
+db.org_icon_nav_info_20160501.find().forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160531.insert(x)});
+db.org_icon_nav_info_20160501.find().limit(4460).skip(30).forEach(function(x){
+delete x._id;db.org_icon_nav_info_20160531.insert(x)});

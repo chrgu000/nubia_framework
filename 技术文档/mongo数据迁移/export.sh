@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /data/program/mongodb-2.4.9/bin
-./mongo 10.206.19.224:27017 drop.js > tables.json
-JSON="tables.json"
+./mongo 10.206.19.224:27017 drop.js >> bak_tables.json
+JSON="bak_tables.json"
 echo $JSON
 for i in `cat $JSON`
 do
