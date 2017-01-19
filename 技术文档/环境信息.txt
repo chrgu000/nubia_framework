@@ -24,15 +24,17 @@ http://api.theme.nubia.cn/
 
 #浏览器
 测试服务器
-http://admin.browser-test.server.ztemt.com.cn/
+http://admin.browser-test.server.nubia.cn/
 admin/Nubrowser2015
-http://api.browser-test.server.ztemt.com.cn/
-http://stat.browser-test.server.ztemt.com.cn/
-http://browser-push.server.ztemt.com.cn/
+http://api.browser-test.server.nubia.cn/
+http://stat.browser-test.server.nubia.cn/
+http://browser-push.server.nubia.cn/
 admin/nubrowser2015
 分布式日志文件系统
 http://10.206.19.237:8255/
 browser/logcentre2016
+http://test.niudatastats.nubia.com/
+nubrowse@test.cn qq123456
 测试环境阿里云
 114.55.250.152  10.24.243.154   浏览器api测试环境
 118.178.95.109  10.24.241.242   浏览器admin,push_admin测试环境
@@ -67,6 +69,8 @@ http://admin.monitor.nubia.cn/
 nubrowser/nubrowser2016
 http://admin-logcenter.nubia.com/
 browser/logcentre2016
+http://niudatastats.nubia.com/
+
 
 连接push数据库
 mysql -h rdsa5m0un7i9h7951118.mysql.rds.aliyuncs.com -ugm -p
@@ -182,3 +186,10 @@ ssh端口： 47461
 114.55.42.115  guming/guming123
 数据库的内网的ip：10.25.67.76
 端口3306
+
+发布环境ftp信息
+ip：10.206.2.112 端口：21 用户名：guming 口令：jrkFBgeTGAwq3f
+
+jenkins持续构建
+http://10.206.63.183:8080/jenkins/login?from=%2Fjenkins%2F
+browser/browser@123
