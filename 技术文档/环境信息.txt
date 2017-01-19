@@ -70,7 +70,7 @@ nubrowser/nubrowser2016
 http://admin-logcenter.nubia.com/
 browser/logcentre2016
 http://niudatastats.nubia.com/
-
+jiang.liangmou@zte.com.cn/jlm2017
 
 连接push数据库
 mysql -h rdsa5m0un7i9h7951118.mysql.rds.aliyuncs.com -ugm -p
