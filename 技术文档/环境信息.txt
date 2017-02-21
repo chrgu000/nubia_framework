@@ -193,3 +193,6 @@ ip：10.206.2.112 端口：21 用户名：guming 口令：jrkFBgeTGAwq3f
 jenkins持续构建
 http://10.206.63.183:8080/jenkins/login?from=%2Fjenkins%2F
 browser/browser@123
+
+Metronomeic下载地址：http://pan.baidu.com/s/1dE2mqyt
+
