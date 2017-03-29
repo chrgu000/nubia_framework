@@ -1,0 +1,76 @@
+1、进入到jdk下的bin目录
+
+2、输入如下指令
+
+keytool -v -genkey -alias tomcat -keyalg RSA -keystore d:/tomcat.keystore  -validity 36500
+
+附：
+
+d:/tomcat.keystore是将生成的tomcat.keystore放到d盘根目录下。
+
+"-validity 36500”含义是证书有效期，36500表示100年，默认值是90天
+
+注意若要放到c盘，在win7系统下，需要以管理员身份进入到命令行中进行操作，否则是无法创建tomcat.keystore的。本例放到d盘下。 
+如何以管理员身份进入到命令行下呢？开始->搜索框中输入cmd->等待（注意不回车）->出现cmd.exe->右键“以管理员身份运行”即可。
+
+3、输入keystore密码
+
+密码任意，此处以123456为例，要记住这个密码，之后在进行server.xml配置时需要使用。
+
+4、输入名字、组织单位、组织、市、省、国家等信息
+
+注意事项：
+A、Enter keystore password：此处需要输入大于6个字符的字符串
+B、“What is your first and last name?”这是必填项，并且必须是TOMCAT部署主机的域名或者IP[如：gbcom.com 或者 10.1.25.251]，就是你将来要在浏览器中输入的访问地址
+C、“What is the name of your organizational unit?”、“What is the name of your organization?”、“What is the name of your City or Locality?”、“What is the name of your State or Province?”、“What is the two-letter country code for this unit?”可以按照需要填写也可以不填写直接回车，在系统询问“correct?”时，对照输入信息，如果符合要求则使用键盘输入字母“y”，否则输入“n”重新填写上面的信息
+D、Enter key password for <tomcat>，这项较为重要，会在tomcat配置文件中使用，建议输入与keystore的密码一致，设置其它密码也可以
+l  完成上述输入后，直接回车则在你在第二步中定义的位置找到生成的文件
+5、输入之后会出现确认的提示
+
+此时输入y，并回车。此时创建完成keystore。 
+进入到D盘根目录下可以看到已经生成的tomcat.xml
+
+6、进入tomcat文件夹 
+找到conf目录下的sever.xml并进行编辑
+
+7、编辑 
+  <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+     maxThreads="150" scheme="https" secure="true" 
+     clientAuth="false" keystoreFile="D:/AppServer/Tomcat/apache-tomcat-6.0.32/conf/tomcat.keystore" 
+     keystorePass="deleiguo" sslProtocol="TLS" /> 
+注： 
+方框中的keystore的密码，就是刚才我们设置的“123456”.
+
+编辑完成后关闭并保存sever.xml
+
+8、Tomcat启动成功后，使用https://127.0.0.1:8443 访问页面
+
+页面成功打开即tomcat下的https配置成功。
+
+ 
+
+9、应用程序HTTP自动跳转到HTTPS
+
+在应用程序中web.xml中加入：
+
+<security-constraint> 
+       <web-resource-collection > 
+              <web-resource-name >SSL</web-resource-name> 
+              <url-pattern>/*</url-pattern> 
+       </web-resource-collection>
+                             
+       <user-data-constraint> 
+              <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+       </user-data-constraint> 
+</security-constraint>
+ 
+10、生成安全证书文件
+keytool -export -alias tomcat -file D:/file.cer -keystore d:/tomcat.keystore -validity 36500
+然后输入d:/tomcat.keystore中的keystore密码
+ 
+-file D:/file.cer 即为生成的cer文件，可直接点击安装
+
+
+
+
+给jvm导入安全证书

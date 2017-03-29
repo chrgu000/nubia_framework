@@ -1,7 +1,7 @@
 环境信息
 #主题
 http://theme-admin-test.nubia.cn/
-admin/Nubia_theme@2016
+admin/Neo_6102!Theme
 http://theme-api-test.nubia.cn/
 测试机器
 api 
@@ -57,6 +57,26 @@ mysql -h rm-bp1d1l1p2cl5r2g2b.mysql.rds.aliyuncs.com -unb_browser_test -p
 数据库名：browser_push_test
 
 
+浏览器数据统计mongo服务器 ：120.27.138.126 
+新申请的机器 es集群 120.26.57.243
+
+ssh端口： 47461
+登录账户：guming  口令： PNWZShyw1jcLyoUkqQ4SWvgR
+
+内容管理平台
+101.37.26.63 api
+101.37.28.57 admin/task
+101.37.28.53 redis
+ssh端口：47461
+登录账号：devsre 已授权sudo 
+密码：HnYSbjiGHsnvF0ULuu
+
+rds：rm-bp1k46tp7g40n4tae.mysql.rds.aliyuncs.com
+数据库：nubia_cms
+账号：nubia_cms
+口令：HrRP9vVx7CT7XHIQO7JwitPVO
+
+
 生产环境
 http://admin.browser.server.nubia.cn/
 getingting/nubrowser2015
@@ -66,9 +86,9 @@ http://browser.server.nubia.cn/
 http://push.browser.server.nubia.cn/
 admin/nubrowser2015
 http://admin.monitor.nubia.cn/
-nubrowser/nubrowser2016
+gu.ming@zte.com.cn/123456
 http://admin-logcenter.nubia.com/
-browser/logcentre2016
+browser/nubrowser2016
 http://niudatastats.nubia.com/
 jiang.liangmou@zte.com.cn/jlm2017
 
@@ -197,4 +217,7 @@ browser/browser@123
 Metronomeic下载地址：http://pan.baidu.com/s/1dE2mqyt
 
 umeng账号
+https://i.umeng.com/
 gu.suzhen@zte.com.cn Gu891127
+
+./jmeter -n -t ../theme_19.jmx -l ../log.jtl
