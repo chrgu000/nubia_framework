@@ -34,7 +34,7 @@ admin/nubrowser2015
 http://10.206.19.237:8255/
 browser/logcentre2016
 http://test.niudatastats.nubia.com/
-nubrowse@test.cn qq123456
+nubrowse@test.cn 123456
 测试环境阿里云
 114.55.250.152  10.24.243.154   浏览器api测试环境
 118.178.95.109  10.24.241.242   浏览器admin,push_admin测试环境
@@ -43,7 +43,7 @@ nubrowse@test.cn qq123456
 
 port: 47461
 username: devbrowser
-password: w1jcLyoUkqQ4SWvg
+password: 9HnYSbjiGHs#!^253
 
 RDS地址：
 mysql -h rm-bp1d1l1p2cl5r2g2b.mysql.rds.aliyuncs.com -unb_browser_test -p
@@ -90,7 +90,7 @@ gu.ming@zte.com.cn/123456
 http://admin-logcenter.nubia.com/
 browser/nubrowser2016
 http://niudatastats.nubia.com/
-jiang.liangmou@zte.com.cn/jlm2017
+jiang.liangmou@zte.com.cn/19820921
 
 连接push数据库
 mysql -h rdsa5m0un7i9h7951118.mysql.rds.aliyuncs.com -ugm -p
